@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start" >
+        <ion-back-button defaultHref="/expense-list"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Expense Update</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content  class="ion-padding" [formGroup]="form">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form_input" lines="none">
+            <ion-label position="floating">Title</ion-label>
+            <ion-input formControlName="title"></ion-input>
+          </ion-item>
+  
+          <ion-item class="form_input" lines="none">
+            <ion-label position="floating">Description</ion-label>
+            <ion-input formControlName="description"></ion-input>
+          </ion-item>
+  
+          <ion-item class="form_input" lines="none">
+            <ion-label position="floating">Expense Amount</ion-label>
+            <ion-input formControlName="expenseAmount"></ion-input>
+          </ion-item>
+  
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" expand="block" fill="outline" (click)="AccessCamera()">
+            <ion-icon name="camera">Camera</ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" fill="outline" (click)="AccessGallery()">
+            <ion-icon name="image"> Gallery</ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <img [src]="base64Image" *ngIf="base64Image" />
+  </ion-grid>
+  <ion-grid>
+    
+      <ion-button color="primary" expand="block" (click)="saveFormData()">Save</ion-button>
+  </ion-grid>
+</ion-content>

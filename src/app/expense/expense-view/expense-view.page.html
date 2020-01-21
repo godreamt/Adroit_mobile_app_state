@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Expense View</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <div class="image_box">
+      <img [src]="imgUrl + expenseData?.documentImage" alt="">
+    </div>
+
+      <ion-grid>
+        <h3 class="page_subTitle mt-30">Expense Info</h3>
+        <div class="card_outer">
+          <ion-card class="bg_white card_style card_shadow">
+            <p class="table_view">Expense Date <span >{{ expenseData?.expenseDate | datex:'MMM DD, YYYY'}}</span></p>
+            <p class="table_view">Title <span >{{ expenseData?.title }}</span></p>
+            <p class="table_view">Expense Amount <span >{{ expenseData?.expenseAmount }}</span></p>
+            <p class="table_view">Allocated Amount <span >{{ (expenseData?.allocatedAmount)?expenseData?.allocatedAmount:"---" }}</span></p>
+            <p class="table_view">Description <span >{{ expenseData?.description }}</span></p>
+            <p class="table_view">Status <span >{{ expenseData?.status | uppercase}}</span></p>
+          </ion-card>
+        </div>
+      </ion-grid>
+</ion-content>

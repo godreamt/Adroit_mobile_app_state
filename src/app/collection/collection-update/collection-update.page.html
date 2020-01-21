@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>New Collection</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [formGroup]="form">
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item class="form_input" lines="none">
+              <ion-label position="floating">Collection Amount</ion-label>
+              <ion-input formControlName="collectionAmount"></ion-input>
+            </ion-item>
+          
+            <ion-item class="form_input" lines="none">
+              <ion-label>Payment method</ion-label>
+              <ion-select formControlName="paymentMethod" placeholder="---">
+                <ion-select-option value="cash">Cash</ion-select-option>
+                <ion-select-option value="cheque">Cheque</ion-select-option>
+                <ion-select-option value="demandDraft">DD</ion-select-option>
+                <ion-select-option value="neft">Neft</ion-select-option>
+                <ion-select-option value="other">Other</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <div [hidden]="form.get('paymentMethod').value == 'cash'">
+                <ion-item class="form_input" lines="none">
+                  <ion-label position="floating">Related Info</ion-label>
+                  <ion-input formControlName="relatedInfo"></ion-input>
+                </ion-item>
+            </div>
+            <ion-item class="form_input" lines="none">
+              <ion-label position="floating">Comments</ion-label>
+              <ion-input formControlName="comments"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+          <ion-button color="primary" expand="block" (click)="makeNewCollection()">Save</ion-button>
+    </ion-grid>
+</ion-content>

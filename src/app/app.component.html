@@ -1,0 +1,34 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu type="overlay">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Adroit US Conchem</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="true" *ngFor="let p of appPages">
+            <ng-container *ngIf="p.type=='link'">
+                <ion-item [routerDirection]="'root'" [routerLink]="[p.url]"  lines="none" >
+                  <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                  <ion-label>
+                    {{p.title}}
+                  </ion-label>
+                </ion-item>
+            </ng-container>
+            <ng-container *ngIf="p.type=='func'">
+                <ion-item (click)="functionHandler(p.function)" lines="none" button>
+                  <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                  <ion-label>
+                    {{p.title}}
+                  </ion-label>
+                </ion-item>
+            </ng-container>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

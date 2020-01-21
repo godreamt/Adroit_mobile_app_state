@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{collectionData?.autoId}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <div class="card_outer">
+      <ion-card class="bg_white card_style card_shadow">
+          <ion-card-header class="pb-5">
+            <h2 class="list_main_title">{{ vendorData?.firstName }} {{ vendorData?.lastName }}</h2>
+            <ion-card-subtitle>{{ vendorData?.area }}, {{ vendorData?.region }} - {{ vendorData?.state }},{{ vendorData?.country }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-text>Mob : {{ vendorData?.mobileNumber }}</ion-text>
+            <ion-text>Email : {{ vendorData?.email }}</ion-text>
+          </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="card_outer">
+        <ion-card class="bg_white card_style card_shadow">
+            <ion-card-header class="pb-5">
+              <h2 class="list_main_title">{{ collectedUserData?.firstName }} {{ collectedUserData?.lastName }}</h2>
+              <span slot="end">
+                <span class="text-info" *ngIf="collectedUserData?.roles == 'sales_executive'">Sales Executive</span>
+              </span>
+              <ion-card-subtitle>{{ collectedUserData?.area }}, {{ collectedUserData?.region }} - {{ collectedUserData?.state }},{{ collectedUserData?.country }}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-text>Mob : {{ collectedUserData?.mobileNumber }}</ion-text>
+              <ion-text>Email : {{ collectedUserData?.email }}</ion-text>
+            </ion-card-content>
+        </ion-card>
+      </div>
+
+      <ion-grid>
+        <h3 class="page_subTitle mt-30">Collection Info</h3>
+        <div class="card_outer">
+          <ion-card class="bg_white card_style card_shadow">
+            <p class="table_view">Collection Ammount <span >{{ collectionData?.collectionAmount }}</span></p>
+            <p class="table_view">Collection Date <span >{{ collectionData?.created_at | datex:'MMM DD, YYYY' }}</span></p>
+            <p class="table_view">Payment Method <span >{{ collectionData?.paymentMethod|uppercase }}</span></p>
+            <p class="table_view">Related Indo <span >{{ collectionData?.relatedInfo }}</span></p>
+            <p class="table_view">Processed On <span >
+              <span *ngIf="!collectionData?.payProcessedDate">---</span>
+              <span *ngIf="collectionData?.payProcessedDate">
+                  {{ collectionData?.payProcessedDate | datex:'MMM DD, YYYY' }}
+              </span></span></p>
+            <p class="table_view mb-0">Comment</p>
+            <p class="mt-0">{{ collectionData?.comments }}</p>
+          </ion-card>
+        </div>
+
+        <h3 class="page_subTitle mt-30">Order Info</h3>
+        <div class="card_outer">
+          <ion-card class="bg_white card_style card_shadow">
+            <p class="table_view">Order <span >#{{ orderDetails?.autoId }}</span></p>
+            <p class="table_view">Order Date <span >{{ orderDetails?.created_at | datex:'MMM DD, YYYY' }}</span></p>
+            <p class="table_view">Order Amount <span >{{ orderDetails?.totalOrderAmount }}</span></p>
+            <p class="table_view">Order Status <span >
+              <span class="text-success" *ngIf="orderDetails?.orderStatus == 'approved'">Approved</span>
+              <span class="text-info" *ngIf="orderDetails?.orderStatus == 'cancelled'">Cancelled</span>
+              <span class="text-danger" *ngIf="orderDetails?.orderStatus == 'new'">New</span>
+              <span class="text-warning" *ngIf="orderDetails?.orderStatus == 'delivered'">Delivered</span></span></p>
+            <p class="table_view">Paid Amount <span >{{ orderDetails?.paidAmount  }}</span></p>
+            <p class="table_view">Balance Amount <span >{{ orderDetails?.balanceAmount }}</span></p>
+            <p class="table_view">Order Points<span >{{ orderDetails?.totalPoints }}</span></p>
+          </ion-card>
+        </div>
+      </ion-grid>
+</ion-content>

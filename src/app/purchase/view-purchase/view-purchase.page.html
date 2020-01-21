@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ orderData.autoId }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <div class="card_outer">
+    <ion-card class="bg_white card_style card_shadow">
+      <ion-card-header class="pb-5">
+        <ion-card-subtitle>{{ orderData?.vendor.area }}, {{ orderData?.vendor.region }} - {{ orderData?.vendor.state }},{{ orderData?.vendor.country }}
+        </ion-card-subtitle>
+        <ion-card-title>{{ orderData?.vendor.firstName }} {{ orderData?.vendor.lastName }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-text>Email : {{ orderData?.vendor.mobileNumber }}</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-text>Mob : {{ orderData?.vendor.email }}</ion-text>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+    </div>
+
+    <div class="card_outer">
+    <ion-card class="bg_white card_style card_shadow">
+        <ion-card-header class="pb-5">
+          <ion-card-subtitle >
+            <ion-row  class="ion-justify-content-between">
+                {{ orderData?.autoId }}
+                
+                <span class="text-success" *ngIf="orderData.orderStatus == 'approved'">Approved</span>
+                <span class="text-danger" *ngIf="orderData.orderStatus == 'cancelled'">Cancelled</span>
+                <span class="text-primary" *ngIf="orderData.orderStatus == 'new'">New</span>
+                <span class="text-warning" *ngIf="orderData.orderStatus == 'delivered'">Delivered</span>
+            </ion-row>
+          </ion-card-subtitle>
+          <ion-card-title>Total : {{ orderData?.totalOrderAmount }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row class="ion-justify-content-between">
+            <ion-text class="text-info" *ngIf=" orderData?.paidAmount > 0">Paid : {{ orderData?.paidAmount }}</ion-text>
+            <ion-text class="text-danger" *ngIf="orderData?.balanceAmount > 0">Balance : {{ orderData?.balanceAmount }}</ion-text>
+          </ion-row>
+          <ion-row *ngIf=" orderData?.totalPoints > 0">
+              <ion-text class="text-warning">Points : {{ orderData?.totalPoints }}</ion-text>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+  </div>
+  <ion-row class="ion-margin-top">
+    <ion-col>
+        <h3 class="page_subTitle mt-30">Products</h3>
+      <!-- <div class="product_header">
+        <span>Products</span>
+      </div> -->
+    </ion-col>
+  </ion-row>
+  
+  <ion-list class="no-lines app_list_style">
+    <ng-container *ngFor="let item of orderData.orderItems; let i=index;" >
+        <ion-item class="ion-no-padding">
+          <ion-label>
+            <h3 class="list_title">{{ item.productDetails.productName }}</h3>
+            <p>
+              <ion-text color="primary">
+                <ion-row class="ion-justify-content-between">
+                  <ion-text solt="start">
+                    Price : {{item.productPrice}}
+                  </ion-text>
+                  <ion-text solt="end">
+                    Quantity : {{item.quantity }}
+                  </ion-text>
+                </ion-row>
+              </ion-text>
+            </p>
+          </ion-label>
+        </ion-item>
+    </ng-container>
+  </ion-list>
+
+  
+  <ion-row class="ion-margin-top" *ngIf="orderData.comments">
+    <ion-col>
+      
+    <ion-text>Comments</ion-text>
+    <p class="text-muted mt-0">{{ orderData.comments }}</p>
+    </ion-col>
+  </ion-row>
+  
+</ion-content>
+
+<ion-footer >
+  <ion-toolbar color="light">
+    <ion-title class="text-danger">{{ orderData.balanceAmount }}</ion-title>
+    <ion-buttons slot="end" *ngIf="orderData.balanceAmount > 0">
+      <ion-button color="light" class="bg_primary" [routerLink]="['/collection-update/'+orderData?.id]">
+        Collect
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

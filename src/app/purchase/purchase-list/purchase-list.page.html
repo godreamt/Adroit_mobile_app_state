@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Purchase History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid  class="ion-padding">
+      <ion-searchbar class="p-0 app_searchStyle" animated [formControl]="searchBar" ></ion-searchbar>
+
+    <!-- <ion-list>
+        <ion-item *ngFor="let item of filteredVendorList | async;" [routerLink]="['/new-purchase/'+item.id]">
+            <ion-label>{{ item.firstName }} {{ item.lastName }}</ion-label>
+        </ion-item>
+        <ion-item *ngIf="(filteredVendorList | async)?.length <= 0" >
+            <ion-label>No Data</ion-label>
+        </ion-item>
+    </ion-list> -->
+    <div class="list_wrapper mt-20">
+    <ion-list lines="none" class="app_list_style">
+      <ion-item  *ngFor="let item of orderList;" class="ion-no-padding" [routerLink]="['/purchase-view/'+item.id]">
+        <ion-label>
+          <h3>{{ item.autoId }} - {{ item.vendorUserName }}</h3>
+          <p>
+            <ion-text color="primary">
+              <ion-row class="ion-justify-content-between">
+                <ion-text solt="start">
+                  Rs. {{ item.totalOrderAmount }}
+                </ion-text>
+                <ion-text solt="end">
+                  <span class="text-success" *ngIf="item.orderStatus == 'approved'">Approved</span>
+                  <span class="text-danger" *ngIf="item.orderStatus == 'cancelled'">Cancelled</span>
+                  <span class="text-primary" *ngIf="item.orderStatus == 'new'">New</span>
+                  <span class="text-warning" *ngIf="item.orderStatus == 'delivered'">Delivered</span>
+                </ion-text>
+              </ion-row>
+            </ion-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item *ngIf="orderList?.length <= 0" >
+          <ion-label>No Data</ion-label>
+      </ion-item>
+    </ion-list>
+</div>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" #purchaseList>
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-grid>
+</ion-content>

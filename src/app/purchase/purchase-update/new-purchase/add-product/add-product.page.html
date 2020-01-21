@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Product</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" class="bg_red">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [formGroup]="form">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+          <ion-item class="form_input" lines="none">
+              <ion-select placeholder="Category" formControlName="category_id" (ionChange)="getSubCategory($event)">
+                  <ion-select-option *ngFor="let item of categoryList;" [value]="item.id">{{ item.title }}</ion-select-option>
+                </ion-select>
+          </ion-item>
+      
+          <ion-item class="form_input" lines="none">
+              <ion-select placeholder="Sub Category"  formControlName="sub_category_id" (ionChange)="getProducts($event)">
+                  <ion-select-option *ngFor="let item of subCategoryList;" [value]="item.id">{{ item.title }}</ion-select-option>
+                </ion-select>
+          </ion-item>
+      
+          <ion-item class="form_input" lines="none">
+              <ion-select placeholder="Product"  formControlName="product_id" (ionChange)="getProductDetail($event)">
+                  <ion-select-option *ngFor="let item of productList;" [value]="item.id">{{ item.title }}</ion-select-option>
+                </ion-select>
+          </ion-item>
+      
+          <ion-item class="form_input" lines="none">
+              <ion-input placeholder="Price" formControlName="price"></ion-input>
+          </ion-item>
+     
+          <ion-item class="form_input" lines="none">
+              <ion-input placeholder="Quantity"  formControlName="quantity"  (keyup)="calculateTotalPrice()"></ion-input>
+          </ion-item>
+      
+          <ion-item class="form_input" lines="none">
+              <ion-input placeholder="Total Price" formControlName="total" readonly></ion-input>
+          </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-button (click)="addProduct()" color="primary" expand="block" >Add</ion-button>
+  </ion-grid>
+</ion-content>

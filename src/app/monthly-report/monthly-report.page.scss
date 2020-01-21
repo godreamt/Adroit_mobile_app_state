@@ -1,0 +1,45 @@
+.welcome-card img {
+    max-height: 35vh;
+    overflow: hidden;
+  }
+  .progres_bar_outer{
+    padding:0px 15px 15px;
+    & .progress_bar{
+      flex: 0 0 100%;
+      max-width: 100%;
+      position: relative;
+      // border: 1px solid var(--ion-color-primary);
+      height: 18px;
+      border-radius: 5px;
+      background-color: rgba(23, 70, 158, 0.09);
+      & span{
+        position: absolute;
+        height: 100%;
+        left: 0;
+        top: 0;
+        border-radius: 5px;
+        background-color: var(--ion-color-primary);
+      }
+    }
+    & .target_numbox{
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      & .num_inner{
+        & p{
+          margin-bottom: 2px;
+          font-size: 14px;
+          margin-top: 5px;
+        }
+        & h4{
+          font-weight: 600;
+          font-size: 17px;
+          margin-top: 0px;
+          margin-bottom: 0px;
+          color: #17469e;
+        }
+      }
+    }
+  }

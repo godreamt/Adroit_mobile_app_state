@@ -1,0 +1,7 @@
+{
+  "name": "sales-executive",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

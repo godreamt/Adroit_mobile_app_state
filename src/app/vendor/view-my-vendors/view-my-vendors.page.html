@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ vendorData.firstName }} {{ vendorData.lastName }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="light" [routerLink]="['/vendor-update/'+vendorData.id]">
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<div class="card_outer">
+  <ion-card class="bg_white card_style card_shadow">
+    <ion-card-header class="pb-5">
+      <ion-card-subtitle>{{ vendorData.area }}, {{ vendorData.region }} - {{ vendorData.state }},{{ vendorData.country }}
+      </ion-card-subtitle>
+      <ion-card-title>{{ vendorData.firstName }} {{ vendorData.lastName }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-text>Email : {{ vendorData.mobileNumber }}</ion-text>
+      </ion-row>
+      <ion-row>
+        <ion-text>Mob : {{ vendorData.email }}</ion-text>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</div>
+
+  
+  <ion-list class="no-lines app_list_style mt-20">
+    <ion-item *ngFor="let item of orderList;" class="ion-no-padding" [routerLink]="['/purchase-view/'+item.id]">
+      <ion-label>
+        <h3>{{ item.autoId }} - {{ item.vendorUserName }}</h3>
+        <p>
+          <ion-text color="primary">
+            <ion-row class="ion-justify-content-between">
+              <ion-text solt="start">
+                Rs. {{ item.totalOrderAmount }}
+              </ion-text>
+              <ion-text solt="end">
+                <span class="text-success" *ngIf="item.orderStatus == 'approved'">Approved</span>
+                <span class="text-danger" *ngIf="item.orderStatus == 'cancelled'">Cancelled</span>
+                <span class="text-primary" *ngIf="item.orderStatus == 'new'">New</span>
+                <span class="text-warning" *ngIf="item.orderStatus == 'delivered'">Delivered</span>
+              </ion-text>
+            </ion-row>
+          </ion-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item *ngIf="orderList?.length <= 0" >
+        <ion-label>No Data</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" #purchaseList>
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+
+
+<ion-footer class="app_footer">
+    <ion-toolbar color="light">
+      <!-- <ion-buttons slot="end"> -->
+        <ion-button color="primary" expand="block" [routerLink]="['/new-purchase/'+vendorData.id]">
+          Make Order
+        </ion-button>
+      <!-- </ion-buttons> -->
+    </ion-toolbar>
+  </ion-footer>
