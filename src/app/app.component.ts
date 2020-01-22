@@ -21,6 +21,12 @@ export class AppComponent  implements OnInit{
       icon: 'home'
     },
     {
+      title: 'Users',
+      type: 'link',
+      url: '/under-users',
+      icon: 'briefcase'
+    },
+    {
       title: 'Vendors',
       type: 'link',
       url: '/my-vendors',

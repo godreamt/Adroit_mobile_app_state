@@ -14,6 +14,14 @@
       <ion-datetime displayFormat="MMM-YYYY" pickerFormat="MMM-YYYY" (ionChange)="changeDate($event)"></ion-datetime>
     </ion-item>
   </ion-grid>
+  
+  <div class="card_outer mb-20" *ngIf="!report">
+    <ion-card class="bg_white card_style card_shadow bor_t_red">
+        <ion-card-header>
+            <ion-card-title>No Data. Please select a date.</ion-card-title>
+        </ion-card-header>
+    </ion-card>
+  </div>
   <div class="card_outer mb-20" *ngIf="report">
       <ion-card class="bg_white card_style card_shadow bor_t_red">
           <ion-card-header>

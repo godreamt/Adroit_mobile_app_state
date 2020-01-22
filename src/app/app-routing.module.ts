@@ -76,7 +76,8 @@ const routes: Routes = [
     loadChildren: './vendor/vendor-update/vendor-update.module#VendorUpdatePageModule' 
   },
   { path: 'monthly-report', loadChildren: './monthly-report/monthly-report.module#MonthlyReportPageModule' },
-  { path: 'monthly-report/:userId', loadChildren: './monthly-report/monthly-report.module#MonthlyReportPageModule' },
+  { path: 'monthly-report/:userId', loadChildren: './monthly-report/monthly-report.module#MonthlyReportPageModule' },  { path: 'under-users', loadChildren: './under-users/under-users.module#UnderUsersPageModule' },
+
 
 ];
 

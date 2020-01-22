@@ -8,7 +8,7 @@
         content: "";
         width: 200%;
         height: 300px;
-        background-color: var(--ion-color-primary);
+        background-color: var(--ion-color-secondary);
         bottom: -290px;
         left: -135px;
         position: absolute;
@@ -19,9 +19,9 @@
         content: "";
         width: 200%;
         height: 300px;
-        background-color: var(--ion-color-secondary);
         top: -290px;
         right: -135px;
+        background-color: var(--ion-color-primary);
         position: absolute;
         transform: rotate(25deg);
         box-shadow: 1px 3px 14px 2px rgba(0, 0, 0, 0.24);
@@ -61,7 +61,7 @@
             margin-top: 30px;
           & ion-button{
                 // --background: #062f77;
-                --background:linear-gradient(290deg, var(--ion-color-secondary) 5%, var(--ion-color-primary) 64%);
+                --background:linear-gradient(290deg, var(--ion-color-primary) 5%, var(--ion-color-secondary) 64%);
                 --border-radius: 10px;
             }
         }

@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Storage } from '@ionic/storage';
 import { DataService } from '../shared/services/data.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-monthly-report',
   templateUrl: './monthly-report.page.html',
@@ -11,9 +12,11 @@ import { DataService } from '../shared/services/data.service';
 export class MonthlyReportPage implements OnInit {
   targetReached=0;
   report;
-  constructor(private storage: Storage, private _serv:DataService) { }
+  userId;
+  constructor(private storage: Storage, private _serv:DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.userId = this.route.snapshot.params.userId;
   }
   
   
@@ -22,9 +25,11 @@ export class MonthlyReportPage implements OnInit {
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
     this.storage.get('userId').then(response => {
-      console.log(response);
+      if(!this.userId) {
+        this.userId = response;
+      }
       this._serv.url="monthly-targets";
-      this._serv.getByParam("user_id="+response+"&month="+month+"&year="+year).subscribe(data => {
+      this._serv.getByParam("user_id="+this.userId+"&month="+month+"&year="+year).subscribe(data => {
         console.log(data['data']);
         let stat = data['data'];
         if(stat.length > 0){

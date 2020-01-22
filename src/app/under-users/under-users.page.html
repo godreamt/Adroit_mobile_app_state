@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-searchbar class="p-0 app_searchStyle" animated [formControl]="searchBar"></ion-searchbar>
+  <div class="list_wrapper pt-10">
+    <ion-list lines="none" class="app_list_style">
+        <ion-item *ngFor="let item of filteredUserList | async;" [routerLink]="['/monthly-report/'+item.id]">
+            <ion-label class="ion-text-wrap">{{ item.firstName }} {{ item.lastName }}</ion-label>
+            <!-- <ion-note slot="end" [class.text-success]="item.vendorBalanceAmount == 0" [class.text-danger]="item.vendorBalanceAmount > 0">{{ item.vendorBalanceAmount }}</ion-note> -->
+        </ion-item>
+        <ion-item *ngIf="(filteredUserList | async)?.length <= 0" >
+            <ion-label>No Data</ion-label>
+        </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
