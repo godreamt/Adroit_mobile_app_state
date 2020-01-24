@@ -154,3 +154,9 @@ export class AppComponent  implements OnInit{
     this.auth.logout();
   }
 }
+
+
+// adroit_state_key_adroid:
+// password: 12345678
+// alias : adroit_state
+// First Name and last name  : Adroit

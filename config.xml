@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Adroit</name>
-    <description>Sales Executive app.</description>
+<widget id="adroit.state.head.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Adroit-State</name>
+    <description>State head</description>
     <author email="hi@ionicframework.com" href="http://godreamt.com/">Godreamt technologies</author>
     <content src="index.html" />
     <access origin="*" />
