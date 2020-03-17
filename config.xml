@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="adroit.state.head.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Adroit-State</name>
+    <name>Adroit-State head</name>
     <description>State head</description>
-    <author email="hi@ionicframework.com" href="http://godreamt.com/">Godreamt technologies</author>
+    <author email="godreamt@gmail.com" href="http://godreamt.com/">Godreamt technologies</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

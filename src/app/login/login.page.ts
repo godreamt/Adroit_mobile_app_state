@@ -14,8 +14,8 @@ export class LoginPage implements OnInit {
   constructor(private authService: AuthService, public menuCtrl: MenuController, private fb:FormBuilder) { 
     
     this.form = this.fb.group ( {
-      email: ['sales@me.com' , Validators.compose ( [ Validators.required, Validators.email ] )] , 
-      password: ['1234567' , Validators.compose ( [ Validators.required ] )]
+      email: ['' , Validators.compose ( [ Validators.required, Validators.email ] )] , //sales@me.com
+      password: ['' , Validators.compose ( [ Validators.required ] )]//1234567
     } );
   }
 
